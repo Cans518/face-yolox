@@ -1,10 +1,8 @@
 import colorsys
-import cv2
-import os
 
 import numpy as np
 import torch
-from PIL import ImageDraw, ImageFont
+from PIL import ImageFont
 
 from yolox_nets.yolo import YoloBody
 from yolox_utils.utils import (cvtColor, get_classes, preprocess_input, resize_image,
@@ -69,13 +67,11 @@ class YOLO(object):
         self.colors = list(map(lambda x: colorsys.hsv_to_rgb(*x), hsv_tuples))
         self.colors = list(map(lambda x: (int(x[0] * 255), int(x[1] * 255), int(x[2] * 255)), self.colors))
         self.generate()
-        
-        show_config(**self._defaults)
 
     #---------------------------------------------------#
     #   生成模型
     #---------------------------------------------------#
-    def generate(self, onnx=False):
+    def generate(self):
         self.net    = YoloBody(self.num_classes, self.phi)
         device      = torch.device('cpu')
         self.net.load_state_dict(torch.load(self.model_path, map_location=device))

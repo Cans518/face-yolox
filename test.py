@@ -12,7 +12,6 @@ if __name__ == '__main__':
         print('Open Error! Try again!')
     http_image, http_name = person.detect_image(image)
     json_data = {
-        "teamName": "myteam",
         "eventId": "7180423a",
         "resultImg": http_image,
         "info": http_name

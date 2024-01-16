@@ -48,5 +48,5 @@ class Person(object):
         base64_data = base64.b64encode(jpeg_data)
         # 将图片转化为字符串
         base64_data = base64_data.decode('utf-8')
-        base64_data = 'data:image/jpeg;base64' + base64_data
+        base64_data = 'data:image/jpeg;base64,' + base64_data
         return base64_data,name_date
